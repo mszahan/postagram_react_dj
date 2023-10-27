@@ -1,0 +1,8 @@
+/__pycache__/
+/media/
+/static/
+/pgv/
+.vscode/
+config/__pycache__/
+core/__pycache__/
+core/migrations/__pycache__/
