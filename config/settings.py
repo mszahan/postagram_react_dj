@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(
-    os.path.abspath(os.path.join(__file__, os.pardir))))
+BASE_DIR = os.path.dirname(
+    os.path.abspath(os.path.join(__file__, os.pardir)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static_files')
 
@@ -42,11 +41,13 @@ INSTALLED_APPS = [
 
     # third pary
     'rest_framework',
+    'rest_framework_simplejwt',
 
 
     # local
     'core',
     'core.user',
+    'core.auth',
 ]
 
 AUTH_USER_MODEL = 'core_user.User'
@@ -142,3 +143,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES':
+    ('rest_framework_simplejwt.authentication.JWTAuthentication', ),
+
+    'DEFAULT_FILTER_BACKENDS':
+    ['django_filters.rest_framework.DjangoFilterBackend'],
+
+}
